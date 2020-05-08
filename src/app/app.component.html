@@ -300,13 +300,13 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<div class="sidenav">
+<div *ngIf="show" class="sidenav">
   <div class="login-main-text">
     <h2>Application<br> Login Page</h2>
     <p>Login here to access.</p>
   </div>
 </div>
-<div class="main">
+<div *ngIf="show" class="main">
   <div class="col-md-6 col-sm-12">
     <div class="login-form">
       <form>
@@ -320,7 +320,7 @@
   </div>
 </div>
 
-
+<router-outlet></router-outlet>
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import {LoginService} from './services/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,9 @@ import {LoginService} from './services/login.service';
 export class AppComponent {
   title = 'frontend-agent';
   password: string;
-  show = true;
+  show = false;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private  router: Router) {
   }
 
 
@@ -20,6 +21,7 @@ export class AppComponent {
       .subscribe(
         response => {
           localStorage.setItem('jwt', response.token);
+          this.router.navigate(['home']);
           alert('successful login');
           this.show = false;
         },
