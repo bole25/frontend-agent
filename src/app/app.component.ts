@@ -14,9 +14,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if (localStorage.jwt != null) {
-      this.router.navigate(['/home']);
-    }else{
+    if (localStorage.jwt == null) {
       this.router.navigate(['/login']);
     }
   }
