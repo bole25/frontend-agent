@@ -3,15 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-import {LoginService} from './services/login.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {LoginService} from './login/login.service';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import {Interceptor} from './interceptor/Interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,
@@ -19,7 +22,13 @@ import { AppRoutingModule } from './app-routing.module';
       HttpClientModule,
       AppRoutingModule,
     ],
-  providers: [LoginService],
+  providers: [LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

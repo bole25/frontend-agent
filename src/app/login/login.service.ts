@@ -14,4 +14,7 @@ export class LoginService {
     return this.http.post<any>(this.userUrl, {password});
   }
 
+  public getSecretString(): Observable<string> {
+    return this.http.get<string>('http://localhost:8080/randomTest',  { responseType: 'text' as 'json'});
+  }
 }
