@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit} from '@angular/core';
 import {LoginService} from './login/login.service';
 import {Router} from '@angular/router';
 
@@ -7,12 +7,18 @@ import {Router} from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'frontend-agent';
-  password: string;
-  show = true;
 
-  constructor(private loginService: LoginService, private  router: Router) {
+  constructor(private  router: Router) {
+  }
+
+  ngOnInit(): void {
+    if (localStorage.jwt != null) {
+      this.router.navigate(['/home']);
+    }else{
+      this.router.navigate(['/login']);
+    }
   }
 
 }
