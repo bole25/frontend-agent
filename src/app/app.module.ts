@@ -9,12 +9,15 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import {Interceptor} from './interceptor/Interceptor';
+import { AddCarComponent } from './addCar/addCar.component';
+import {AddCarService} from './addCar/addCar.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    AddCarComponent
   ],
     imports: [
         BrowserModule,
@@ -22,7 +25,7 @@ import {Interceptor} from './interceptor/Interceptor';
       HttpClientModule,
       AppRoutingModule,
     ],
-  providers: [LoginService,
+  providers: [LoginService,AddCarService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
