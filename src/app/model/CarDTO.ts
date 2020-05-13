@@ -1,4 +1,5 @@
 export class CarDTO {
+    id: number;
     carType: string;
     carModel: string;
     transmissionType: string;

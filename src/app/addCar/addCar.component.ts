@@ -21,16 +21,16 @@ import {Router} from '@angular/router';
     kmAmount:number;
     cdw:Boolean;
     kidsSeats:number;
-  
-    constructor(private service: AddCarService,private  router: Router) { 
+
+    constructor(private service: AddCarService, private  router: Router) {
       this.carDTO = new CarDTO();
     }
-  
+
     ngOnInit(): void {
     }
 
     onSubmitCreate() {
-        
+
         /*this.service.createCertificate(this.subjectData, CurValue, alias, tempate).subscribe(result => {
           alert('Successfully');
           location.reload();
@@ -54,5 +54,5 @@ import {Router} from '@angular/router';
           this.router.navigate(['home']);
         });
       }
-   
+
   }
