@@ -11,13 +11,16 @@ import { AppRoutingModule } from './app-routing.module';
 import {Interceptor} from './interceptor/Interceptor';
 import { AddCarComponent } from './addCar/addCar.component';
 import {AddCarService} from './addCar/addCar.service';
+import { EnterOccupationComponent } from './enter-occupation/enter-occupation.component';
+import { EnterOccupationService } from './enter-occupation/enterOccupation.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AddCarComponent
+    AddCarComponent,
+    EnterOccupationComponent
   ],
     imports: [
         BrowserModule,
@@ -25,7 +28,7 @@ import {AddCarService} from './addCar/addCar.service';
       HttpClientModule,
       AppRoutingModule,
     ],
-  providers: [LoginService,AddCarService,
+  providers: [LoginService, AddCarService, EnterOccupationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
