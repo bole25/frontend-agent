@@ -1,5 +1,6 @@
 <p>home works!</p>
 <button (click)="getString()">get super secret string</button>
 <p>The super secret string is: {{secretString}}</p>
-<a class="nav-link" routerLink="/addCar">Add Car</a><br/>
-<a class="nav-link" routerLink="/enterOccupation">Enter occupation for car</a>
+<a *ngIf="adminLoggedIn()" class="nav-link" routerLink="/addCar">Add Car</a><br/>
+<a class="nav-link" routerLink="/enterOccupation">Enter occupation for car</a><br>
+<button (click)="logout()">Log out</button>
