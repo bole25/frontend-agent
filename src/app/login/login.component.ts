@@ -22,8 +22,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         response => {
           localStorage.setItem('jwt', response.token);
+          localStorage.setItem('role', response.role);
           this.router.navigate(['home']);
-          alert('successful login');
+          alert('successful login ' + localStorage.getItem('role'));
           this.show = false;
         },
         err => {
@@ -31,6 +32,9 @@ export class LoginComponent implements OnInit {
             alert('Wrong password');
           } else if (err.status === 406 || err.status === 403) {
             alert('Wrong password');
+          }
+          else {
+            alert('something gone wrong');
           }
         });
   }

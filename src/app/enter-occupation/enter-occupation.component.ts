@@ -12,12 +12,12 @@ import {CustomerDTO} from '../model/CustomerDTO';
 
 export class EnterOccupationComponent implements OnInit {
   freeCars: Set<CarDTO>;
-  customers: Set<CustomerDTO>
+  customers: Set<CustomerDTO>;
   startingDate: Date;
   endingDate: Date;
-  withNewDriver: Boolean;
-  withExistingDriver: Boolean;
-  withoutDriver: Boolean;
+  withNewDriver: boolean;
+  withExistingDriver: boolean;
+  withoutDriver: boolean;
   name: string;
   surname: string;
   jmbg: number;
@@ -27,8 +27,8 @@ export class EnterOccupationComponent implements OnInit {
   constructor(private service: EnterOccupationService, private  router: Router) { }
 
   ngOnInit(): void {
-    this.freeCars = new Set<CarDTO>()
-    this.customers = new Set<CustomerDTO>()
+    this.freeCars = new Set<CarDTO>();
+    this.customers = new Set<CustomerDTO>();
     this.withNewDriver = false;
     this.withExistingDriver = false;
     this.withoutDriver = true;
@@ -36,7 +36,7 @@ export class EnterOccupationComponent implements OnInit {
   }
 
   onSubmitFindFreeCars(){
-    console.log(this.customers)
+    console.log(this.customers);
     this.service.getFreeCars(this.startingDate, this.endingDate).subscribe( response => this.freeCars = response);
   }
   findAllCustomers(){
@@ -44,14 +44,16 @@ export class EnterOccupationComponent implements OnInit {
   }
   onSubmitCreate(){
 
-    if(this.withNewDriver){
-      console.log("Sa kreiranjen novog korisnika")
+    if (this.withNewDriver){
+      console.log('Sa kreiranjen novog korisnika');
+      // tslint:disable-next-line:max-line-length
       this.service.setOccupationWithNewDriver(this.startingDate, this.endingDate, this.selectedId, this.name, this.surname, this.jmbg).subscribe(result => {
         alert('Successfully');
         this.router.navigate(['home']);
       });
-    } else if(this.withExistingDriver){
+    } else if (this.withExistingDriver){
       // dodati poziv funkcije za slanje sa postojecim vozacem
+      // tslint:disable-next-line:max-line-length
       this.service.setOccupationWithExistingDriver(this.startingDate, this.endingDate, this.selectedId, this.selectedCustomerId).subscribe(result => {
         alert('Successfully');
         this.router.navigate(['home']);

@@ -4,6 +4,7 @@ import { AddCarService } from './addCar.service';
 import {Router} from '@angular/router';
 
 @Component({
+  // tslint:disable-next-line:component-selector
     selector: 'app-addCar',
     templateUrl: './addCar.component.html',
     styleUrls: []
@@ -12,21 +13,24 @@ import {Router} from '@angular/router';
   export class AddCarComponent implements OnInit {
     carDTO: CarDTO;
     carType: string;
-    carModel:string;
-    carClass:string;
-    lowerPrice:number;
-    upperPrice:number;
-    transmissionType:string;
-    kmPlanAmount:number;
-    kmAmount:number;
-    cdw:Boolean;
-    kidsSeats:number;
+    carModel: string;
+    carClass: string;
+    lowerPrice: number;
+    upperPrice: number;
+    transmissionType: string;
+    kmPlanAmount: number;
+    kmAmount: number;
+    cdw: boolean;
+    kidsSeats: number;
 
     constructor(private service: AddCarService, private  router: Router) {
       this.carDTO = new CarDTO();
     }
 
     ngOnInit(): void {
+      if (localStorage.getItem('role') !== 'admin'){
+        this.router.navigate(['home']);
+      }
     }
 
     onSubmitCreate() {
@@ -36,7 +40,7 @@ import {Router} from '@angular/router';
           location.reload();
         });*/
         const e = (document.getElementById('gasType')) as HTMLSelectElement;
-        console.log(this.carModel)
+        console.log(this.carModel);
         this.carDTO.carModel = this.carModel;
         this.carDTO.carClass = this.carClass;
         this.carDTO.carType = this.carType;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import {LoginService} from '../login/login.service';
 export class HomeComponent implements OnInit {
   secretString: string;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,5 +25,19 @@ export class HomeComponent implements OnInit {
         err => {
           alert('You must log in');
         });
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
+
+  adminLoggedIn() {
+    if (localStorage.getItem('role') === 'admin'){
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 }
