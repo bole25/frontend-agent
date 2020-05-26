@@ -32,17 +32,17 @@ export class EnterOccupationService {
   }
 
   public setOccupationWithoutDriver(startingDate: Date, endingDate: Date, carsId: Number){
-    console.log(this.setOccupationWitoutDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId)
+    //console.log(this.setOccupationWitoutDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId)
     return this.http.get<any>(this.setOccupationWitoutDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId);
   }
 
   public setOccupationWithNewDriver(startingDate: Date, endingDate: Date, carsId: Number, name: String, surname: String, jmbg: Number){
-    console.log(this.setOccupationWithNewDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId + '/' + name + '/' + surname + '/' + jmbg)
+    //console.log(this.setOccupationWithNewDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId + '/' + name + '/' + surname + '/' + jmbg)
     return this.http.get<any>(this.setOccupationWithNewDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId + '/' + name + '/' + surname + '/' + jmbg);
   }
 
   public setOccupationWithExistingDriver(startingDate: Date, endingDate: Date, carsId: Number, customersId: Number){
-    console.log(this.setOccupationWithExistingDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId + '/' + customersId)
+    //console.log(this.setOccupationWithExistingDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId + '/' + customersId)
     return this.http.post<any>(this.setOccupationWithExistingDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId +  '/' + customersId, null);
   }
 

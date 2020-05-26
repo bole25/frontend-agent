@@ -54,9 +54,12 @@ export class EnterOccupationComponent implements OnInit {
     } else if (this.withExistingDriver){
       // dodati poziv funkcije za slanje sa postojecim vozacem
       // tslint:disable-next-line:max-line-length
-      this.service.setOccupationWithExistingDriver(this.startingDate, this.endingDate, this.selectedId, this.selectedCustomerId).subscribe(result => {
+      this.service.setOccupationWithExistingDriver(this.startingDate, this.endingDate, this.selectedId, this.selectedCustomerId).subscribe(response => {
         alert('Successfully');
         this.router.navigate(['home']);
+      }, error => {
+        alert('You tried to hack us, you piece of crap');
+        console.log('You tried to hack us, you piece of crap');
       });
     }
     else {

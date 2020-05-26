@@ -4,13 +4,14 @@
     <input type="date" id="startingDate" class="form-control"required
            [(ngModel)]="startingDate"
            [ngModelOptions]="{standalone: true}"
-           ng-model-options="{timezone: 'utc'}"
+           ng-model="ddd"
+
 
     />
     <input type="date" id="endingDate" class="form-control" required
            [(ngModel)]="endingDate"
            [ngModelOptions]="{standalone: true}"
-           ng-model-options="{timezone: 'utc'}"
+           ng-model="ddd"
     />
     <button class="btn btn-success" type="submit">Find free cars for dates</button>
   </div>
@@ -20,7 +21,7 @@
   <div class="form-group" style="margin-bottom: 5px">
 
     Select free car for date
-    <select [(ngModel)]="selectedId" id="selectedId" name="selectCar">
+    <select [(ngModel)]="selectedId" id="selectedId" name="selectCar" #selectCar = "ngModel">
       <option *ngFor="let car of freeCars" [value]="car.id" required>
         {{car.carModel}}
       </option>
@@ -45,24 +46,29 @@
     </div>
   </div>
   <div class="form-group" style="margin-bottom: 5px">
+    <div>
     Name
-    <input type="text" id="name" class="form-control" placeholder="Name" required
+    <input type="text" id="name" class="form-control"  name = "nameIme" #nameIme = "ngModel" pattern="[a-zA-Z\\s\\-]{1,50}" placeholder="Name" required
            [(ngModel)]="name"
            [ngModelOptions]="{standalone: true}"
            [disabled]="!withNewDriver ? '' : null"
     />
+    <i class = "zmdi zmdi-search input-group-symbol"></i>
+    </div>
+    <div class="alert alert-danger" *ngIf="nameIme.touched && !nameIme.valid" style="color: red">Data is not in correct form, only letters.</div>
   </div>
   <div class="form-group" style="margin-bottom: 5px">
     Surname
-    <input type="text" id="surname" class="form-control" placeholder="Surname" required
+    <input type="text" id="surname" class="form-control" name = "surnameIme" #surnameIme = "ngModel" pattern="[a-zA-Z\\s\\-]{1,50}"placeholder="Surname" required
            [(ngModel)]="surname"
            [ngModelOptions]="{standalone: true}"
            [disabled]="!withNewDriver ? '' : null"
     />
+    <div class="alert alert-danger" *ngIf="surnameIme.touched && !surnameIme.valid" style="color: red">Data is not in correct form, only letters.</div>
   </div>
   <div class="form-group" style="margin-bottom: 5px">
     Jmbg
-    <input type="number" id="jmbg" class="form-control" placeholder="Jmbg" required
+    <input type="number" id="jmbg" class="form-control" placeholder="Jmbg" required name="jmbgIme" #jmbgIme = "ngModel"
            [(ngModel)]="jmbg"
            [ngModelOptions]="{standalone: true}"
            [disabled]="!withNewDriver ? '' : null"
@@ -78,13 +84,18 @@
     />
     <br/>
     Select driver
-    <select [(ngModel)]="selectedCustomerId" id="selectedCustomerId" name="selectedCustomer" [disabled]="!withExistingDriver ? '' : null">
+    <select [(ngModel)]="selectedCustomerId" id="selectedCustomerId" name="selectedCustomer" #selectedCustomer="ngModel" [disabled]="!withExistingDriver ? '' : null">
       <option *ngFor="let car of customers" [value]="car.id" required>
         {{car.name}}
       </option>
     </select>
   </div>
   <br/>
-  <button class="btn btn-success" type="submit">Submit</button>
+  <button class="btn btn-success" type="submit"
+          [disabled] = "((withNewDriver) && ( (!nameIme.valid) || (!surnameIme.valid) || (jmbgIme.value == null))) ||
+                        (selectedCustomer.value == null && withExistingDriver) ||
+                        !withExistingDriver == withoutDriver == withNewDriver ||
+                        (selectCar.value == null)"
+  >Submit</button>
 </form>>
 
