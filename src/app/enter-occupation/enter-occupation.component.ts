@@ -11,7 +11,7 @@ import {CustomerDTO} from '../model/CustomerDTO';
 })
 
 export class EnterOccupationComponent implements OnInit {
-  freeCars: Set<CarDTO>;
+  cars: Set<CarDTO>;
   customers: Set<CustomerDTO>;
   startingDate: Date;
   endingDate: Date;
@@ -27,47 +27,42 @@ export class EnterOccupationComponent implements OnInit {
   constructor(private service: EnterOccupationService, private  router: Router) { }
 
   ngOnInit(): void {
-    this.freeCars = new Set<CarDTO>();
+    this.cars = new Set<CarDTO>();
     this.customers = new Set<CustomerDTO>();
     this.withNewDriver = false;
     this.withExistingDriver = false;
     this.withoutDriver = true;
     this.findAllCustomers();
+    this.findAllCars();
   }
-
-  onSubmitFindFreeCars(){
-    console.log(this.customers);
-    this.service.getFreeCars(this.startingDate, this.endingDate).subscribe( response => this.freeCars = response);
+  findAllCars(){
+    this.service.getAllCars().subscribe(response => this.cars = response);
+    console.log(this.cars);
   }
   findAllCustomers(){
     this.service.getAllCustomers().subscribe(response => this.customers = response);
   }
   onSubmitCreate(){
 
-    if (this.withNewDriver){
-      console.log('Sa kreiranjen novog korisnika');
-      // tslint:disable-next-line:max-line-length
-      this.service.setOccupationWithNewDriver(this.startingDate, this.endingDate, this.selectedId, this.name, this.surname, this.jmbg).subscribe(result => {
+      this.service.setOccupation(this.startingDate, this.endingDate, this.selectedId, this.name, this.surname, this.jmbg).subscribe(result => {
         alert('Successfully');
         this.router.navigate(['home']);
+      }, error => {
+        alert("Wrong data");
       });
-    } else if (this.withExistingDriver){
       // dodati poziv funkcije za slanje sa postojecim vozacem
       // tslint:disable-next-line:max-line-length
-      this.service.setOccupationWithExistingDriver(this.startingDate, this.endingDate, this.selectedId, this.selectedCustomerId).subscribe(response => {
+      /*this.service.setOccupationWithExistingDriver(this.startingDate, this.endingDate, this.selectedId, this.selectedCustomerId).subscribe(response => {
         alert('Successfully');
         this.router.navigate(['home']);
       }, error => {
         alert('You tried to hack us, you piece of crap');
         console.log('You tried to hack us, you piece of crap');
       });
-    }
-    else {
       this.service.setOccupationWithoutDriver(this.startingDate, this.endingDate, this.selectedId).subscribe(result => {
         alert('Successfully');
         this.router.navigate(['home']);
-      });
-    }
+      });*/
 
   }
   newDriverChanged(){

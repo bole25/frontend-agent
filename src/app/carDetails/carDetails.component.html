@@ -1,0 +1,56 @@
+<div>
+    <h1 style="color:red;background-color: aqua;">Car details : {{car.carClass}} {{car.carModel}}</h1><br><br><br>
+
+    <table>
+        <tr>
+            <td><b>Car type  </b></td>
+            <td><u>{{car.carType}}</u></td>
+        </tr>
+        <tr>
+            <td><b>Transimission type    </b> </td>
+            <td><u>{{car.transmissionType}}</u></td>
+        </tr>
+        <tr>
+            <td><b>Gas type </b></td>
+            <td><u>{{car.gasType}}</u></td>
+        </tr>
+        <tr>
+            <td><b>Km amount</b> </td>
+            <td><u>{{car.kmAmount}}</u></td>
+        </tr>
+        <tr>
+            <td><b>Km plan amount </b></td>
+            <td><u>{{car.kmPlanAmount}}</u></td>
+        </tr>
+        <tr>
+            <td><b>Kids seats </b></td>
+            <td><u>{{car.kidsSeats}}</u></td>
+        </tr>
+        <tr>
+            <td><b>Likes : </b></td>
+            <td><u><br><p id="likes">{{car.likes}}</p></u></td>
+        </tr>
+        <tr>
+            <td><b>Dislikes : </b></td>
+            <td><u><p id="dislikes">{{car.dislikes}}</p></u></td>
+        </tr><br>
+        <tr>
+            <td><button (click)="likeCar(car.id)" style="background-color: green;color:white;">Like</button></td>
+            <td><button (click)="dislikeCar(car.id)" style="background-color: red;color:white;">Dislike</button></td>
+        </tr>
+    </table>
+    <h3>Images</h3>
+</div>
+<div style="text-align:center;float:right;margin-top:-300px;height:200px;width:700px;border: 1px solid blue;">
+    <h2 style="color:white;background-color:orange;">Enter comment</h2>
+    <form>
+        <input style="width: 200px; height: 50px;" [(ngModel)]="enterComment" [ngModelOptions]="{standalone: true}" type="text"><br><br>
+        <button style="border-radius: 30px;color:white;background-color: black;" (click)="commentCar(car.id)">Enter comment</button>
+    </form>
+</div>
+<div id="imageDiv" style="height:700px;width:700px;border: 1px solid blue;">
+
+</div>
+<div id="comments" style="text-align:center;float:right;margin-top:-600px;height:640px;width:700px;border: 1px solid red;">
+    <h2 style="color:white;background-color:gold;">Comments</h2>
+</div>

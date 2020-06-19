@@ -1,0 +1,21 @@
+<h1>Cars requests</h1>
+<table style="border: 1px solid blue;">
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let req of requests">
+            <td>{{req.model}}</td>
+            <td>{{req.type}}</td>
+            <td>{{req.status}}</td>
+            <td (click)="acceptRequest(req.id,req.status)" ><button>Accept</button></td>
+            <td (click)="declineRequest(req.id,req.status)"><button>Decline</button></td>
+        </tr>
+        
+    </tbody>
+</table>

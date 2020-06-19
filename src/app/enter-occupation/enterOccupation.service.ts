@@ -10,13 +10,14 @@ export class EnterOccupationService {
   findAllCarsUrl: string;
   findAllCustomersUrl: string;
   setOccupationWitoutDriverUrl: string;
-  setOccupationWithNewDriverUrl: string;
+  setOccupationForCustomer: string;
   setOccupationWithExistingDriverUrl: string;
+
   constructor(private http: HttpClient) {
     this.findFreeCarsUrl = 'http://localhost:8080/car/freeForDates';
     this.findAllCarsUrl = 'http://localhost:8080/car/all';
     this.setOccupationWitoutDriverUrl = 'http://localhost:8080/occupation/createWithoutCustomer';
-    this.setOccupationWithNewDriverUrl = 'http://localhost:8080/occupation/createWithNewCustomer';
+    this.setOccupationForCustomer = 'http://localhost:8080/occupation/new';
     this.setOccupationWithExistingDriverUrl = 'http://localhost:8080/occupation/createWithExistingCustomer';
     this.findAllCustomersUrl = 'http://localhost:8080/customer/all';
   }
@@ -36,9 +37,9 @@ export class EnterOccupationService {
     return this.http.get<any>(this.setOccupationWitoutDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId);
   }
 
-  public setOccupationWithNewDriver(startingDate: Date, endingDate: Date, carsId: Number, name: String, surname: String, jmbg: Number){
+  public setOccupation(startingDate: Date, endingDate: Date, carsId: Number, name: String, surname: String, jmbg: Number){
     //console.log(this.setOccupationWithNewDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId + '/' + name + '/' + surname + '/' + jmbg)
-    return this.http.get<any>(this.setOccupationWithNewDriverUrl + '/' + startingDate + '/' + endingDate + '/' + carsId + '/' + name + '/' + surname + '/' + jmbg);
+    return this.http.get<any>(this.setOccupationForCustomer + '/' + startingDate + '/' + endingDate + '/' + carsId + '/' + name + '/' + surname + '/' + jmbg);
   }
 
   public setOccupationWithExistingDriver(startingDate: Date, endingDate: Date, carsId: Number, customersId: Number){

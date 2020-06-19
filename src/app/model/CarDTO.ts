@@ -11,4 +11,8 @@ export class CarDTO {
     kmPlanAmount : number;
     kidsSeats : number;
     cdw : Boolean;
+    images: Array<string>;
+    likes : number;
+    dislikes : number;
+    comments : Array<string>;
   }
