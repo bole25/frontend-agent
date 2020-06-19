@@ -13,6 +13,14 @@ import { AddCarComponent } from './addCar/addCar.component';
 import {AddCarService} from './addCar/addCar.service';
 import { EnterOccupationComponent } from './enter-occupation/enter-occupation.component';
 import { EnterOccupationService } from './enter-occupation/enterOccupation.service';
+import {AllCarsComponent} from './allCars/allCars.component';
+import {AllCarService} from './allCars/allCars.service';
+import {CarDetailsComponent} from './carDetails/carDetails.component';
+import { CarDetailsService } from './carDetails/carDetails.service';
+import { CarStatisticsComponent } from './car-statistics/car-statistics.component';
+import { CarStatisticsService} from './car-statistics/car-statistics.service';
+import { RequestsComponent } from './requests/requests.component';
+import { RequestsService } from './requests/requests.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +28,11 @@ import { EnterOccupationService } from './enter-occupation/enterOccupation.servi
     HomeComponent,
     LoginComponent,
     AddCarComponent,
-    EnterOccupationComponent
+    EnterOccupationComponent,
+    AllCarsComponent,
+    CarDetailsComponent,
+    CarStatisticsComponent,
+    RequestsComponent,
   ],
     imports: [
         BrowserModule,
@@ -28,7 +40,7 @@ import { EnterOccupationService } from './enter-occupation/enterOccupation.servi
       HttpClientModule,
       AppRoutingModule,
     ],
-  providers: [LoginService, AddCarService, EnterOccupationService,
+  providers: [LoginService, AddCarService, EnterOccupationService,AllCarService,CarDetailsService,CarStatisticsService,RequestsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

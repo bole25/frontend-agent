@@ -74,7 +74,32 @@
              [ngModelOptions]="{standalone: true}"
       />
     </div>
+    <div class="form-group">
+      <label>Images </label>
+      <input type="file" class="form-control" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+            text/plain, application/pdf, image/*" (change)="changeListener($event)"
+             [disabled]="base64Images.size == 5"
+      >
+    </div>
     <div class="form-group" style="margin-top: 20px">
       <button class="btn btn-success" type="submit">Create</button>
     </div>
   </form>
+  <div>
+    <table>
+      <tr>
+
+        <td *ngFor="let image of base64Images">
+          <table align="center">
+            <tr>
+              <img src="{{image}}" height="100px" />
+            </tr>
+            <tr>
+              <button class="btn-delete" (click)="removeImage(image)">Remove</button>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+  </div>

@@ -1,4 +1,15 @@
-<form (ngSubmit)="onSubmitFindFreeCars()">
+<form (ngSubmit)="onSubmitCreate()">
+  <div class="form-group" style="margin-bottom: 5px">
+
+    Select car for occupation:
+    <select [(ngModel)]="selectedId" id="selectedId" name="selectCar" #selectCar = "ngModel">
+      <option *ngFor="let car of this.cars" [value]="car.id" required>
+        {{car.carClass}} {{car.carModel}}
+      </option>
+    </select>
+    <br/>
+    <br/>
+  </div>
   <div class="form-group" style="margin-bottom: 5px">
     <h5 style="color:#33ccbb">Enter starting date and ending date</h5>
     <input type="date" id="startingDate" class="form-control"required
@@ -13,37 +24,6 @@
            [ngModelOptions]="{standalone: true}"
            ng-model="ddd"
     />
-    <button class="btn btn-success" type="submit">Find free cars for dates</button>
-  </div>
-</form>>
-
-<form (ngSubmit)="onSubmitCreate()">
-  <div class="form-group" style="margin-bottom: 5px">
-
-    Select free car for date
-    <select [(ngModel)]="selectedId" id="selectedId" name="selectCar" #selectCar = "ngModel">
-      <option *ngFor="let car of freeCars" [value]="car.id" required>
-        {{car.carModel}}
-      </option>
-    </select>
-    <br/>
-    Without driver
-    <input type="checkbox" id="withoutDriver" class="form-control"
-           [(ngModel)]="withoutDriver"
-           [ngModelOptions]="{standalone: true}"
-           (change)="withoutDriverChanged()"
-    />
-
-    <br/>
-    <div class="form-group" style="margin-bottom: 5px">
-      <br/>
-      With new driver
-      <input type="checkbox" id="withNewDriver" class="form-control"
-             [(ngModel)]="withNewDriver"
-             [ngModelOptions]="{standalone: true}"
-             (change)="newDriverChanged()"
-      />
-    </div>
   </div>
   <div class="form-group" style="margin-bottom: 5px">
     <div>
@@ -51,7 +31,6 @@
     <input type="text" id="name" class="form-control"  name = "nameIme" #nameIme = "ngModel" pattern="[a-zA-Z\\s\\-]{1,50}" placeholder="Name" required
            [(ngModel)]="name"
            [ngModelOptions]="{standalone: true}"
-           [disabled]="!withNewDriver ? '' : null"
     />
     <i class = "zmdi zmdi-search input-group-symbol"></i>
     </div>
@@ -62,7 +41,6 @@
     <input type="text" id="surname" class="form-control" name = "surnameIme" #surnameIme = "ngModel" pattern="[a-zA-Z\\s\\-]{1,50}"placeholder="Surname" required
            [(ngModel)]="surname"
            [ngModelOptions]="{standalone: true}"
-           [disabled]="!withNewDriver ? '' : null"
     />
     <div class="alert alert-danger" *ngIf="surnameIme.touched && !surnameIme.valid" style="color: red">Data is not in correct form, only letters.</div>
   </div>
@@ -71,31 +49,9 @@
     <input type="number" id="jmbg" class="form-control" placeholder="Jmbg" required name="jmbgIme" #jmbgIme = "ngModel"
            [(ngModel)]="jmbg"
            [ngModelOptions]="{standalone: true}"
-           [disabled]="!withNewDriver ? '' : null"
     />
-  </div>
-  <div class="form-group" style="margin-bottom: 5px">
-    <br/>
-    With existing driver
-    <input type="checkbox" id="withExistingDriver" class="form-control"
-           [(ngModel)]="withExistingDriver"
-           [ngModelOptions]="{standalone: true}"
-           (change)="existingDriverChanged()"
-    />
-    <br/>
-    Select driver
-    <select [(ngModel)]="selectedCustomerId" id="selectedCustomerId" name="selectedCustomer" #selectedCustomer="ngModel" [disabled]="!withExistingDriver ? '' : null">
-      <option *ngFor="let car of customers" [value]="car.id" required>
-        {{car.name}}
-      </option>
-    </select>
   </div>
   <br/>
-  <button class="btn btn-success" type="submit"
-          [disabled] = "((withNewDriver) && ( (!nameIme.valid) || (!surnameIme.valid) || (jmbgIme.value == null))) ||
-                        (selectedCustomer.value == null && withExistingDriver) ||
-                        !withExistingDriver == withoutDriver == withNewDriver ||
-                        (selectCar.value == null)"
-  >Submit</button>
-</form>>
+  <button class="btn btn-success" type="submit">Submit</button>
+</form>
 

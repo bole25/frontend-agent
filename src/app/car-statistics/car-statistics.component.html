@@ -1,0 +1,24 @@
+<h1>Cars statistics</h1>
+<table style="border: 1px solid blue;">
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>Type</th>
+            <th>Uses</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <td>{{car.carModel}}</td>
+            <td>{{car.carType}}</td>
+            <td>{{car.usesCount}}</td>
+        </tr>
+        
+    </tbody>
+</table>
+<div style="float:right;width:800px;height:250px;border: 1px solid red;">
+    <h2>Car with best grade : </h2>
+    <span><b>{{bestGradeCar.carModel}} {{bestGradeCar.carType}}</b>    with     <b>{{bestGradeCar.likes}}</b> likes</span><br>
+    <h2>Car with most km</h2>
+    <span *ngIf = "isValidCarModel"><b>{{mostKmCar.carModel}} {{mostKmCar.carType}}</b>    with     <b>{{mostKmCar.kmAmount}}</b> km</span>
+</div>
