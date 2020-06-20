@@ -12,7 +12,7 @@ export class CarDetailsService {
     enterCommentUrl:string;
 
     constructor(private http: HttpClient) {
-        this.findById = 'http://localhost:8080/car/getById'
+        this.findById = 'http://localhost:8080/car'
         this.likeUrl = 'http://localhost:8080/car/like';
         this.dislikeUrl = 'http://localhost:8080/car/dislike'; 
         this.enterCommentUrl = 'http://localhost:8080/car/enterComment'; 

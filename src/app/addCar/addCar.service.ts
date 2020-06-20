@@ -9,7 +9,7 @@ export class AddCarService {
     carCreateUrl : string;
 
     constructor(private http: HttpClient) {
-        this.carCreateUrl = 'http://localhost:8080/car/create';
+        this.carCreateUrl = 'http://localhost:8080/car';
       }
 
 
