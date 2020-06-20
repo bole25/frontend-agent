@@ -15,11 +15,11 @@ export class EnterOccupationService {
 
   constructor(private http: HttpClient) {
     this.findFreeCarsUrl = 'http://localhost:8080/car/freeForDates';
-    this.findAllCarsUrl = 'http://localhost:8080/car/all';
+    this.findAllCarsUrl = 'http://localhost:8080/car';
     this.setOccupationWitoutDriverUrl = 'http://localhost:8080/occupation/createWithoutCustomer';
     this.setOccupationForCustomer = 'http://localhost:8080/occupation/new';
     this.setOccupationWithExistingDriverUrl = 'http://localhost:8080/occupation/createWithExistingCustomer';
-    this.findAllCustomersUrl = 'http://localhost:8080/customer/all';
+    this.findAllCustomersUrl = 'http://localhost:8080/customer';
   }
 
   public getFreeCars(startingDate: Date, endingDate: Date): Observable<any> {

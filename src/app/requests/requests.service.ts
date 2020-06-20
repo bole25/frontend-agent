@@ -11,9 +11,9 @@ export class RequestsService {
     declineRequestUrl:string;
 
     constructor(private http: HttpClient) {
-        this.findAllCarsUrl = 'http://localhost:8080/occupation/getAllCarsRequests';
-        this.acceptRequestUrl = 'http://localhost:8080/occupation/acceptRequest';
-        this.declineRequestUrl = 'http://localhost:8080/occupation/declineRequest';
+        this.findAllCarsUrl = 'http://localhost:8080/request';
+        this.acceptRequestUrl = 'http://localhost:8080/request/acceptRequest';
+        this.declineRequestUrl = 'http://localhost:8080/request/declineRequest';
     }
 
 
