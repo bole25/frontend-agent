@@ -15,4 +15,6 @@ export class CarDTO {
     likes : number;
     dislikes : number;
     comments : Array<string>;
+    startDate : Date;
+    endDate : Date;
   }

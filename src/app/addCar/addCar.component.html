@@ -5,6 +5,20 @@
       <h5 style="color:#33ccbb">Select gas type</h5>
     </div>
     <div class="form-group" style="margin-bottom: 5px">
+    <input type="date" id="startingDate" class="form-control"required
+           [(ngModel)]="startDate"
+           [ngModelOptions]="{standalone: true}"
+           ng-model="ddd"
+
+
+    />
+    </div>
+    <input type="date" id="endingDate" class="form-control" required
+           [(ngModel)]="endDate"
+           [ngModelOptions]="{standalone: true}"
+           ng-model="ddd"
+    />
+    <div class="form-group" style="margin-bottom: 5px">
     <select class="form-control" id="gasType">
       <option value="Gas">Gas</option>
       <option value="Oil">Diesel</option>

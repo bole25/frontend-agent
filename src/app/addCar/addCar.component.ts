@@ -22,6 +22,8 @@ import {Router} from '@angular/router';
     kmAmount: number;
     cdw: boolean;
     kidsSeats: number;
+    startDate : Date;
+    endDate : Date;
 
     public base64Image: string;
     public base64Images: Set<string>;
@@ -55,6 +57,8 @@ import {Router} from '@angular/router';
         this.carDTO.cdw = this.cdw;
         this.carDTO.kidsSeats = this.kidsSeats;
         this.carDTO.gasType = e.value;
+        this.carDTO.startDate = this.startDate;
+        this.carDTO.endDate = this.endDate;
 
         this.carDTO.images = Array.from(this.base64Images);
 
