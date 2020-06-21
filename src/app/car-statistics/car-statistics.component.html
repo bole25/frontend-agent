@@ -1,5 +1,5 @@
 <h1>Cars statistics</h1>
-<table style="border: 1px solid blue;">
+<table style="width:40%" class="table table-dark">
     <thead>
         <tr>
             <th>Model</th>
@@ -16,9 +16,12 @@
         
     </tbody>
 </table>
-<div style="float:right;width:800px;height:250px;border: 1px solid red;">
+<div style="margin-top:-80px;float:right;width:800px;height:250px;border: 2px solid blue;border-radius: 20px;">
+    <div style="padding-top:40px;padding-left:50px;margin: auto;width: 400px;height: 100%">
     <h2>Car with best grade : </h2>
-    <span><b>{{bestGradeCar.carModel}} {{bestGradeCar.carType}}</b>    with     <b>{{bestGradeCar.likes}}</b> likes</span><br>
+    <span><b>{{bestGradeCar.carModel}} {{bestGradeCar.carType}}</b>    with     <b>{{bestGradeCar.likes}}</b> likes</span><br><hr>
     <h2>Car with most km</h2>
     <span *ngIf = "isValidCarModel"><b>{{mostKmCar.carModel}} {{mostKmCar.carType}}</b>    with     <b>{{mostKmCar.kmAmount}}</b> km</span>
+    </div>
 </div>
+
