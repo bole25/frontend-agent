@@ -8,6 +8,7 @@ import { AllCarsComponent} from './allCars/allCars.component';
 import {CarDetailsComponent} from './carDetails/carDetails.component';
 import {CarStatisticsComponent} from './car-statistics/car-statistics.component';
 import {RequestsComponent} from './requests/requests.component';
+import {MessagesComponent} from './messages/messages.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'car-details/:id', component: CarDetailsComponent },
   {path: 'carStatistics', component : CarStatisticsComponent},
   {path : 'requests' , component : RequestsComponent},
+  {path : 'messages' , component : MessagesComponent},
 ];
 
 @NgModule({

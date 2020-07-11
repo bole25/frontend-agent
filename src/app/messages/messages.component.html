@@ -1,0 +1,29 @@
+<table>
+<thead>
+<tr>
+  <th>From</th>
+  <th>Text</th>
+  <th>To</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let msg of messages">
+  <td width="20%">{{msg.senderUsername}}</td>
+  <td width="20%">{{msg.textMessage}}</td>
+  <td width="20%">{{msg.receiverUsername}}</td>
+  <td width="20%"> <button class="btn btn-warning" (click)="startReply(msg.receiverUsername, msg.senderUsername)">Reply</button></td>
+</tr>
+
+</tbody>
+</table>
+<div *ngIf="showAnswer" style="margin-top: 20px;">
+  <table>
+   <tr>
+  <textarea [(ngModel)]="this.answer.textMessage" [ngModelOptions]="{standalone : true}" rows="10" placeholder="Input answer here" ></textarea>
+   </tr>
+    <tr>
+      <button (click)="sendMessage()">Send</button>
+    </tr>
+  </table>
+</div>
