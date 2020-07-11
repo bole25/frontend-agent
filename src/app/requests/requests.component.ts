@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestsService } from './requests.service';
 import { Router } from '@angular/router';
 import { RequestDTO } from '../model/RequestDTO';
+import {RequestSOAP} from '../model/RequestSOAP';
 
 @Component({
   selector: 'app-requests',
@@ -9,9 +10,9 @@ import { RequestDTO } from '../model/RequestDTO';
   styleUrls: ['./requests.component.css']
 })
 export class RequestsComponent implements OnInit {
-  public requests : Set<RequestDTO>;
-  constructor(private service: RequestsService, private  router: Router) { 
-    this.requests = new Set<RequestDTO>();
+  public requests : Set<RequestSOAP>;
+  constructor(private service: RequestsService, private  router: Router) {
+    this.requests = new Set<RequestSOAP>();
   }
 
   ngOnInit(): void {
@@ -25,7 +26,10 @@ export class RequestsComponent implements OnInit {
     alert("Cant accept request with status : Accept/Declined");
   }else{
     this.service.acceptRequest(id).subscribe(response =>  {
-      location.reload();
+      this.service.getAllCars().subscribe(response =>  {
+        this.requests = response;
+        alert("Successfull accepted");
+      });
     });
   }
  }
@@ -34,9 +38,21 @@ export class RequestsComponent implements OnInit {
     alert("Cant accept request with status : Accept/Declined");
   }else {
     this.service.declineRequest(id).subscribe(response =>  {
-      location.reload();
+      this.service.getAllCars().subscribe(response =>  {
+        this.requests = response;
+        alert("Declined");
+      });
     });
   }
+ }
+
+ get prikazitabelu(){
+    if(this.requests.size > 0){
+      return true;
+    }
+    else {
+      return false;
+    }
  }
 
 }

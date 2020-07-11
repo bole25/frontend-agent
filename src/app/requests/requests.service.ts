@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TableCarDTO } from '../model/TableCarDTO';
+import {RequestSOAP} from '../model/RequestSOAP';
 
 
 @Injectable()
@@ -18,13 +19,13 @@ export class RequestsService {
 
 
       public getAllCars(): Observable<any> {
-        return this.http.get<Set<TableCarDTO>>(this.findAllCarsUrl );
+        return this.http.get<Set<RequestSOAP>>(this.findAllCarsUrl );
       }
       public acceptRequest(id:number): Observable<any> {
-        return this.http.get(this.acceptRequestUrl + "/" + id );
+        return this.http.get(this.acceptRequestUrl + '/' + id );
       }
       public declineRequest(id:number): Observable<any> {
-        return this.http.get(this.declineRequestUrl + "/" + id );
+        return this.http.get(this.declineRequestUrl + '/' + id );
       }
-      
+
 }
