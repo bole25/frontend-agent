@@ -21,6 +21,8 @@ import { CarStatisticsComponent } from './car-statistics/car-statistics.componen
 import { CarStatisticsService} from './car-statistics/car-statistics.service';
 import { RequestsComponent } from './requests/requests.component';
 import { RequestsService } from './requests/requests.service';
+import { MessagesComponent } from './messages/messages.component';
+import {MessagesService} from './messages/messages.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { RequestsService } from './requests/requests.service';
     CarDetailsComponent,
     CarStatisticsComponent,
     RequestsComponent,
+    MessagesComponent,
   ],
     imports: [
         BrowserModule,
@@ -40,7 +43,8 @@ import { RequestsService } from './requests/requests.service';
       HttpClientModule,
       AppRoutingModule,
     ],
-  providers: [LoginService, AddCarService, EnterOccupationService,AllCarService,CarDetailsService,CarStatisticsService,RequestsService,
+  providers: [LoginService, AddCarService, EnterOccupationService, AllCarService, CarDetailsService, CarStatisticsService, RequestsService,
+    MessagesService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

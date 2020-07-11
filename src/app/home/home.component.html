@@ -2,7 +2,8 @@
     <a *ngIf="adminLoggedIn()" class="navbar-brand" routerLink="/addCar">Add Car</a><br/>
     <a class="navbar-brand" routerLink="/enterOccupation">Enter occupation for car</a><br>
     <a *ngIf="adminLoggedIn()" class="navbar-brand" routerLink="/allCars">All cars</a><br>
-    <a *ngIf="adminLoggedIn()" class="navbar-brand" routerLink="/carStatistics">Cars statistics</a><br> 
+    <a *ngIf="adminLoggedIn()" class="navbar-brand" routerLink="/carStatistics">Cars statistics</a><br>
     <a *ngIf="adminLoggedIn()" class="navbar-brand" routerLink="/requests">Request</a><br>
+  <a *ngIf="adminLoggedIn()" class="navbar-brand" routerLink="/messages">Messages</a><br>
     <button class="btn btn-warning" (click)="logout()">Log out</button>
 </nav>
