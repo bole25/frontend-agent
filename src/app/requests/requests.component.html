@@ -1,21 +1,25 @@
 <h1>Cars requests</h1>
 <table style="border: 1px solid blue;">
-    <thead>
+    <thead *ngIf="prikazitabelu">
         <tr>
-            <th>Model</th>
-            <th>Type</th>
+            <th>id</th>
             <th>Status</th>
+            <th>Vehicles</th>
             <th colspan="2">Actions</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let req of requests">
-            <td>{{req.model}}</td>
-            <td>{{req.type}}</td>
+            <td>{{req.id}}</td>
             <td>{{req.status}}</td>
-            <td (click)="acceptRequest(req.id,req.status)" ><button>Accept</button></td>
-            <td (click)="declineRequest(req.id,req.status)"><button>Decline</button></td>
+            <td>
+              <table>
+                <tr *ngFor="let vehicle of req.vehicles"> {{vehicle.vehicleName}}; {{vehicle.timeSpan.startDate | date: 'mediumDate'}}, {{vehicle.timeSpan.endDate | date: 'mediumDate'}} </tr>
+              </table>
+            </td>
+            <td (click)="acceptRequest(req.id,req.status)" ><button class="btn btn-success">Accept</button></td>
+            <td (click)="declineRequest(req.id,req.status)"><button class="btn btn-danger">Decline</button></td>
         </tr>
-        
+
     </tbody>
 </table>
